@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://mn63nko60w4v"]
+
+[ext_resource type="Script" path="res://sparks.gd" id="1_xo0u5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wbopx"]
+transparency = 1
+disable_ambient_light = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.945098, 0.0745098, 1)
+emission_enabled = true
+emission = Color(1, 0.917647, 0.0352941, 1)
+emission_energy_multiplier = 2.6
+disable_receive_shadows = true
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_tkgtv"]
+material = SubResource("StandardMaterial3D_wbopx")
+radius = 0.05
+radial_steps = 6
+sections = 3
+
+[sub_resource type="Gradient" id="Gradient_bmar8"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[node name="Sparks" type="CPUParticles3D"]
+emitting = false
+amount = 10
+lifetime = 0.25
+one_shot = true
+explosiveness = 0.85
+mesh = SubResource("TubeTrailMesh_tkgtv")
+particle_flag_align_y = true
+direction = Vector3(2.08165e-12, 2.08165e-12, -1)
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+scale_amount_min = 0.25
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_bmar8")
+script = ExtResource("1_xo0u5")
